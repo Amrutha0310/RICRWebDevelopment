@@ -1,0 +1,39 @@
+body{
+    background-color: rgb(106, 106, 214);
+}
+#regis{
+    border:1px solid rgb(243, 235, 235);
+    width:400px;
+    height:400px;
+    margin: 20px auto;
+    padding:20px;
+    border-radius:10px;
+    box-shadow: 2px 2px 2px 0px grey;
+    background-color:azure;
+}
+#register{
+    background-color: white;
+}
+.inpt{
+    width:300px;
+}
+#p1{
+    text-align:center;
+}
+.btn{
+    border:1px solid  #3a4bab;
+    background-color:rgba(80, 96, 223, 0.979);
+    color:aliceblue;
+    width: 100%;
+    margin-top:18px;
+    padding:10px;
+    border-radius:7px;
+    font-weight: bold;
+}
+.btn:hover{
+    color: #520ef0;
+  background-color: aliceblue;
+}
+.btn:active{
+    background-color: rgb(7, 7, 99);
+  color: aliceblue;
