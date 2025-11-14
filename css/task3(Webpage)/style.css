@@ -1,0 +1,532 @@
+:root{
+  --pri:grey;
+}
+.navbar{
+     border:1px solid rgba(243, 243, 243, 0.968);
+     background-color:azure;
+     color:rgb(17, 17, 17);
+     display:flex;
+     padding:8px;
+     border-radius:10px;
+     justify-content:space-between;
+     align-items: center;
+
+     position:sticky;
+     top:0px;
+     font-family:Arial, Helvetica, sans-serif;
+     font-size: medium;
+     a{
+    text-decoration:none;
+    color:black;
+    font-weight:700;
+    font-size: medium;
+}
+}
+  body{
+    background-color:azure;
+  }
+*{
+    padding:0;
+    margin:0;
+}
+
+#btn{
+    border:1px solid  #040613;
+    background-color:rgba(13, 13, 13, 0.979);
+    color:aliceblue;
+    width:fit-content;
+    padding:5px;
+    border-radius:7px;
+    font-weight: bold;
+    font-size:medium;
+    height:fit-content;
+}
+#btn:hover{
+    color:rgb(124, 121, 121);
+  background-color: aliceblue;
+}
+#btn:active{
+    background-color: rgb(23, 23, 23);
+  color: aliceblue;
+}
+#bt{
+    border:1px solid white;
+    background-color:white;
+    color:black;
+    width:fit-content;
+    padding:5px;
+    border-radius:7px;
+    font-weight: bold;
+    font-size:small;
+}
+#bt:hover{
+    color:white;
+  background-color:grey;
+}
+#bt:active{
+    background-color: rgb(23, 23, 23);
+  color: aliceblue;
+}
+.horizontal{
+    display: flex;
+    gap:10px;
+}
+#heading{
+    color:black;
+    font-weight:bolder;
+    margin-bottom:20px;
+    gap:10px;
+    font-size:x-large;
+    font-family: sans-serif;
+    
+    .disp2{
+      display:flex;  
+      
+    }
+
+}
+.para{
+  color:grey;
+  font-weight:bold;
+  font-size: large;
+}
+.p1{
+  font-weight:600;
+  font-size: medium;
+  color:black;
+  margin-top:10px;
+  line-height:30px;
+}
+#email{
+  font-size: 16px;
+  input{
+   width: 300px;
+   height:40px;
+   border-radius:10px ;
+  }
+   
+}
+#b1{
+  button{
+ border:1px solid  #040613;
+    background-color:rgba(13, 13, 13, 0.979);
+    color:aliceblue;
+    width:fit-content;
+    padding:5px;
+    border-radius:7px;
+    font-weight: bold;
+    font-size:medium;
+    height:fit-content;
+    display: flex;
+    
+  }
+  
+}
+
+
+.symbols{
+  margin-top:90px;
+  width:1300px;
+
+ h4{
+ text-align:center;
+ font-weight:bold;
+ color:grey;
+  }
+}
+.sy{
+  margin-top:30px;
+  display:flex;
+  justify-content: center;
+  gap:25px;
+
+  img{
+    width:150px;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+}
+ .text{
+  margin-top:100px;
+  margin-left:100px;
+  display: flex;
+ 
+
+ }
+ .skills{
+   text-align:center;
+   margin-top:100px;
+   padding:20px;
+   gap:30px;
+   line-height:1.5;
+   #content{
+     color: grey;
+     justify-content: space-between;
+     font-size: large;
+     font-weight: bold;
+   }
+ }
+ #mainDiv{
+   width:90vw;
+    margin:auto;
+    display:grid;
+    grid-template-columns:auto auto auto ;
+    gap:10px;
+    margin-top:100px ;
+    line-height:1.5;
+}
+ .subDiv{
+    border:1px solid white;
+    border-radius:5px;
+    padding:10px;
+    margin:10px 10px 10px 10px;
+    text-align: center;
+    font-weight: bold;
+  .color{
+      color:grey;
+      margin-top:10px;
+    }
+    h3{
+      font-weight: 900;
+    }
+
+}
+@media screen and (max-width:1200px) {
+    #mainDiv{
+        grid-template-columns:auto auto auto auto ;
+    }
+    
+}
+@media screen and (max-width:960px) {
+    #mainDiv{
+        grid-template-columns:auto auto auto ;
+    }
+    
+}
+@media screen and (max-width:768px) {
+    #mainDiv{
+        grid-template-columns:auto auto ;
+    }                                                            
+    
+}
+@media screen and (max-width:576px) {
+     #mainDiv{
+        grid-template-columns:auto;
+    }
+    
+}
+#Projects{
+   text-align:center;
+   margin-top:100px;
+   padding:20px;
+   gap:30px;
+   line-height:1.5;
+   font-weight: bold;
+   p{
+    color:grey;
+   }
+}
+#maindiv2{
+    width:90vw;
+    margin:auto;
+    display:grid;
+    grid-template-columns:auto auto auto auto ;
+    gap:10px;
+    margin-top:100px ;
+    line-height:1.5;
+}
+ 
+
+
+.subdiv2{
+  border:1px solid white;
+    border-radius:5px;
+    padding:10px;
+    margin:10px 10px 10px 10px;
+    font-weight: bold;
+  img{
+    border-radius:8px ;
+    transition: transform 0.5s ease;
+  }
+  img:hover{
+    transform:rotateX(5deg) rotateY(5deg) scale(1.05);
+    box-shadow: 5px 5px 10px 2px grey;
+  }
+  h3{
+    font-weight: bold;
+  }
+  p{
+    color:grey;
+    font-weight:bold;
+    line-height:1.2;
+  }
+  .bbt{
+    background-color: black;
+    border-radius:5px;
+    color:white;
+    margin-top:5px;
+    
+
+  }
+}
+.c1{
+  display:flex;
+  
+}
+
+#resume{
+     margin-top:100px;
+     margin-left:100px;
+     p{
+      color:grey;
+     line-height:1.2;
+     margin-top:7px ;
+     }
+     button{
+      background-color: white;
+      color:black;
+      border-radius:5px;
+      border: 1px solid white;
+      font-size: medium;
+       margin-top:7px ;
+       padding:5px;
+        }
+        button:hover{
+          background-color: rgb(173, 166, 166);
+          
+
+        }
+
+}
+#ex{
+  display:flex;
+  flex-direction: column;
+  margin-left:400px; 
+  margin-top:100px;
+  margin-right: 100px;
+  
+  p{
+    color:grey;
+     display: flex;
+    margin-bottom:30px; 
+   
+    
+  }
+}
+
+
+.photo{
+  width:500px;
+  height:500px;
+  display:flex;
+  padding-left:50px;
+   padding-top:0px ; 
+
+  
+  img{
+      width:100%;
+      border-radius:10px;
+      object-fit:cover;
+      box-shadow:10px;
+      flex-direction: row;
+      object-position: top;
+      height: 100%;
+     
+  
+      
+  }
+}
+#d1{
+  text-align: center;
+  margin-top:100px;
+  font-weight: bold;
+  p{
+    color:grey;
+
+  }
+}
+#dev{
+  margin-top:100px;
+  line-height:1.5;
+  font-size: medium;
+  font-weight:bold;
+  margin-left:200px;
+   .pp{
+    color:grey;
+
+   }
+  }
+  .symbols2{
+   
+  margin-top:90px;
+  width:1300px;
+   margin-top:100px;
+   margin-bottom:50px;
+ h4{
+ text-align:center;
+ font-weight:bold;
+ color:grey;
+  }
+  h1{
+    text-align: center;
+  }
+  }
+  .sy2{
+  margin-top:30px;
+  display:flex;
+  justify-content: center;
+  gap:25px;
+  filter:grayscale(100); 
+  
+
+  img{
+    width:150px;
+    align-items:center;
+    justify-content:space-between;
+    color:var(--pri);
+    
+  }
+}
+#contact{
+  text-align: center;
+  font-weight:bold;
+  margin-top:100px;
+  font-size: larger;
+   h5{
+     margin-top:20px;
+    color:grey;
+    font-weight: bold;
+    font-size: medium;
+    
+   }
+}
+#terms{
+  color:grey;
+  font-size:15px;
+  a{
+    color:grey;
+  }
+}
+.disp1{
+     margin-top:50px ;
+}
+.disp2{
+  margin-top:0px;
+  padding:0px ;
+}
+.b5{
+   display:flex ;
+}
+#contact-us{
+    margin-top: 150px;
+    width: 1300px;
+    h1{
+        font-size: 50px;
+        text-align: center;
+margin-bottom: 30px;
+        color: #3a3939;
+    }
+    #con{
+        text-align: center;
+        color: var(--secondary);
+        width: 500px;
+         font-weight:medium;
+        font-size: 20px;
+        margin:0 380px 0 380px ;
+    }
+}
+.CON{
+margin: 50px;
+    border: 3px solid rgb(183, 171, 171);
+    border-radius: 10px;
+    display: flex;
+    gap: 40px;
+    #contact-info{
+       height: 500px;
+       width: 700px;
+       border: 1px solid #000;
+       border-radius: 5px;
+       margin: 30px;
+       background-color:#131212;
+        h2{
+       color: aliceblue;
+       padding: 60px 0 20px 20px ;
+       }
+       p{
+     color: azure;
+    padding: 0 60px;
+    margin-bottom: 30px;
+
+       }
+       h3{
+        padding: 20px 10px;
+        color:aliceblue ;
+        margin-left:30px; ;
+       }
+    }
+    #infoForm{
+     height: 400px;
+       width: 600px;
+       margin: 40px;
+
+       .info{
+       display:flex;
+       }
+    
+    .formfield{
+
+        margin: 10px;
+        label{
+            color: rgb(94, 115, 152);
+        font-size: 15px;
+        }
+        #E2{
+            input{
+                width: 230px;
+                height: 20px;
+                border: 0;
+                outline: 0;
+            }
+        }
+            
+        
+        #E1{
+        
+            input{
+                width: 500px;
+                height: 20px;
+                border: 0;
+                outline: 0;
+            }
+        }
+       #E3{
+        input{
+            margin: 5px;
+        
+    }
+  }
+
+#msg{
+    textarea{
+outline: 0;
+     border:none }
+    }
+
+
+button{
+    margin: 80px 20px 10px 380px ;
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #131212;
+   
+ a{
+    text-decoration: none;
+    color: white;
+}
+  button:hover{
+     box-shadow: 5px 5px 10px 2px rgb(117, 130, 141);
+  }
+}
+
