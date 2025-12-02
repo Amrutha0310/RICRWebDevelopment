@@ -1,0 +1,16 @@
+.log{
+    width: 1000px;
+        height: 700px;
+        margin: 20px 150px 20px 150px;
+        display: flex;
+        gap: 50px;
+        justify-content: center;
+        align-items: end;
+}
+.reg{
+    width: 500px;
+        padding: 25px;
+        border-radius: 10px;
+        align-items:end;
+
+}
