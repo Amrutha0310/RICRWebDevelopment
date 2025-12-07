@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+
+    <div class="d-flex justify-content-center ">
+     <div class="enq   border p-3   rounded shadow-lg ">
+      <div class="text-center">
+    <h2 class="text-center mb-3">Student Registration</h2>
+       
+    <form id="enrollForm border-dark">
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" id="name" class="form-control" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">College</label>
+        <input type="text" id="college" class="form-control" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Branch</label>
+        <input type="text" id="branch" class="form-control" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Semester</label>
+        <input
+          type="number"
+          id="semester"
+          class="form-control"
+          required
+          min="1"
+          max="10"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          class="form-control"
+          required
+          pattern="[0-9]{10}"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" id="email" class="form-control" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Gender</label>
+        <select id="gender" class="form-control" required>
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Course Name</label>
+        <input type="text" id="courseName" class="form-control" readonly />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+    </div>
+    </div>
+    </div>
+  </body>
+</html>
