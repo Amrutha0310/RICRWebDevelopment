@@ -17,23 +17,83 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container p-3 d-flex gap-3">
+
+  
+       <header>
+      <div
+        class="container-fluid bg-info px-3 py-2 text-center display-6 fw-bold text-light"
+      >
+       Serach States  
+      </div>
+    </header>
+    
+    
+      <header>
+        <div class="d-flex gap-3 mt-3  py-3 ms-3">
+        <div class="d-flex col-md-8">
+          <select class="form-select form-select-sm" name="state" id="State">
+            <option>--Select Any state</option>
+            <option>Rajasthan</option>
+            <option>Madhya Pradesh</option>
+            <option>Delhi</option>
+            <option>Gujarat</option>
+            <option>Tamil Nadu</option>
+            <option>Kerala</option>
+            <option>Maharashtra</option>
+            <option>Andhra Pradesh</option>
+            <option>Himachal Pradesh</option>
+            <option>Goa</option>
+            <option>Kerala</option>
+            <option>Karnataka</option>
+            <option>Tripura</option>
+            <option>Uttar Pradesh</option>
+            <option>Ladakh</option>
+            <option>Jammu & Kashmir</option>
+            <option>Telangana</option>
+            <option>Sikkim</option>
+            <option>Punjab</option>
+            <option>Odisha</option>
+            <option>Nagaland</option>
+            <option>Mizoram</option>
+            <option>Manipur</option>
+            <option>Meghalaya</option>
+            <option>Jharkhand</option>
+            <option>Chhattisgarh</option>
+            <option>Bihar</option>
+            <option>Assam</option>
+            <option>Arunachal pradesh</option>
+            <option>Uttarakhand</option>
+            <option>West bengal</option>
+          </select>
+        </div>
+      
+      <div class="col-md-4">
+        <button class="btn btn-primary w-25" onclick="search()">
+          Search <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </div>
+    </header>
+
+    <!--<div class="container p-3 d-flex gap-3">
       <input
         type="text"
         id="State"
         class="form-control"
         placeholder="Type State Name to Search"
-      />
-      <button class="btn btn-primary w-25" onclick="search()">Search <i class="bi bi-search"></i> </button>
-    </div>
+      />-->
 
-    <div style="position: relative" class="overflow-hidden container d-flex justify-content-center mt-4 " id="Map" style="max-width: fit-content;">
+    <div
+      style="position: relative"
+      class="overflow-hidden container d-flex justify-content-center mt-4"
+      id="Map"
+      style="max-width: fit-content"
+    >
       <!--<i class="bi bi-flag-fill text-danger fs-3" id="flag" style="position: absolute; top: 640px; left: 500px;"></i>-->
       <!-- <i class="bi bi-flag-fill text-danger fs-3" id="flag" style="position: absolute; top: 700px; left: 330px;"></i> -->
-      <img src="./Map (2).jpg"  class="img-fluid map-img rounded"alt="india" />
+      <img src="./Map (2).jpg" class="img-fluid map-img rounded" alt="india" />
     </div>
-    <div>
-    </div>
+    <div></div>
 
     <!--
 

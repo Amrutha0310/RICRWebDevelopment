@@ -2,7 +2,7 @@ function search() {
   const state = document.getElementById("State").value.trim().toLowerCase();
 
   if (!state) {
-    alert("State Empty");
+    alert("Please Kindly Select any state!");
     return;
   }
 
@@ -175,7 +175,18 @@ else if (state === "uttar pradesh" || state === "up") {
     flag.style.left = "560px";
     flag.title = "State: Uttar Pradesh \nCapital: Lucknow";
 }
-
+ if (state === "delhi") {
+  flag.style.top = "140px";
+  flag.style.left = "490px";
+}
+if (state === "jammu & kashmir" || state === "Jk") {
+  flag.style.top = "30px";
+  flag.style.left = "450px";
+}
+if (state === "ladakh") {
+  flag.style.top = "30px";
+  flag.style.left = "500px";
+}
   
  
   document.getElementById("Map").appendChild(flag);
