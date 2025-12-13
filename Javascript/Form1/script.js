@@ -10,10 +10,10 @@ if(!/^[A-Za-z ]+$/.test(nm)){   //Regular Expression
    alert("Wrong Input");
   return;
  } 
- if(!/^[\w.]+@gmail|outlook|ricr|yahoo)\.(com|in|co.in)$/.test(em)){
-     alert("Wrong Email");
-     return;
- }
+//  if(!/^[\w.]+@gmail|outlook|ricr|yahoo)\.(com|in|co.in)$/.test(em)){
+    //  alert("Wrong Email");
+    //  return;
+ 
   
    
 

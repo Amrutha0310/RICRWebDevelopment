@@ -1,0 +1,17 @@
+body {
+  background-color: #99d4f6;
+}
+
+.age-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+}
+
+h2 {
+  letter-spacing: 1px;
+}
+
+#result {
+  font-size: 18px;
+}
