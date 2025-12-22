@@ -1,0 +1,12 @@
+.card {
+  border-radius: 14px;
+}
+
+button:hover {
+  transform: scale(1.02);
+  transition: 0.2s ease;
+}
+
+#breakdown p {
+  margin-bottom: 6px;
+}

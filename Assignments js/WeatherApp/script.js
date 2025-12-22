@@ -1,6 +1,13 @@
 async function getWeather() {
   const city = document.getElementById("city").value.trim();
+   if(city === "") {  
+     alert('Please Select any state!!');
+        return;
+         }
+  
+
   const { lat, lon } = await getGeoLoc(city);
+ 
 
 console.log(lat,lon);
 
@@ -32,3 +39,4 @@ async function getGeoLoc(City) {
 
   return { lat, lon }; //json only with key  // Latitude:lat-> can also write
 }
+ 
