@@ -2,15 +2,34 @@ import React from "react";
 import { useState } from "react";
 
 const Contact = () => {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  // const [fullName, setFullName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [message, setMessage] = useState("");
+   const Contact = () => {
+    const [contactData, setContactData]= useState({
+      fullName:"",
+      email:"",
+      phone: "",
+      city: "",
+      subject:"",
+      message:"",
+    });
+   }
+
+
+
   const [isloading , setIsLoading] = useState(false);
 
+
+  const handleChange = (e) => {
+    const {name, value} =e.target;
+      setContactData((previousData) => ({ ...previousData, [name]: value }));
+  };
+
   const handleClearForm = () => {
-    setFullName("");
-    setEmail("");
-    setMessage("");
+    // setFullName("");
+    // setEmail("");
+    // setMessage("");
   };
 
   const handleSubmit = async (e) => {
@@ -40,13 +59,13 @@ const Contact = () => {
         <div>
           <form onReset={handleClearForm} onSubmit={handleSubmit}>
             <div className="p-2">
-              <label htmlFor="FullName">FullName</label>
+              <label htmlFor="fullName">FullName</label>
               <input
                 type="text"
                 name="fullName"
                 id="fullName"
-                value={fullName}
-                onChange={(event) => setFullName(event.target.value)}
+                value={contactData.fullName}
+                onChange={handleChange}
                 placeholder="Enter your name"
                 className="rounded bg-amber-200" required
               />
@@ -57,8 +76,8 @@ const Contact = () => {
                 type="email"
                 name="email"
                 id="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                value={contactData.email}
+                onChange={handleChange}
                 placeholder="Enter your Email"
                 className="text-pink-400 rounded"  required
               />
@@ -68,8 +87,8 @@ const Contact = () => {
               <textarea
                 name="message"
                 id="message"
-                value={message}
-                onChange={(event) => setMessage(event.target.value)}
+                value={contactData.message}
+                onChange={handleChange}
                 placeholder="Any Msg"
                 className="text-pink-400 rounded" required
               ></textarea>
@@ -78,7 +97,7 @@ const Contact = () => {
               <button type="reset" className="rounded">
                 Clear Form
               </button>
-              <button type="Submit">Submit</button>
+              <button type="Submit">{isloading?"Loading":"Submit"}</button>
             </div>
           </form>
         </div>
