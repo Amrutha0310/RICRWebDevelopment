@@ -26,6 +26,10 @@ const Header = () => {
            <FaPhone className="text-lg" />
             Contact
           </Link>
+          <Link to={"/signup"} className="flex  hover:text-blue-300 items-center gap-1">
+           
+            Signup
+          </Link>
         </div>
       </div>
     </>
