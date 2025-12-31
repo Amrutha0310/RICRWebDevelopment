@@ -7,11 +7,12 @@ import About from "./pages/About";
 import Courses from "./pages/Course";
 import Contact from "./pages/Contact";
 import EnquiryForm from "./pages/EnquiryForm";
+import {Toaster} from "react-hot-toast"
 
 const App = () => {
   return (
     <BrowserRouter>
-    
+      <Toaster/>
       <Header />
 
       

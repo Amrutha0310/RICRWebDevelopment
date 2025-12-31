@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const EnquiryForm = () => {
-     const [isLoading, setIsLoading] = useState(false);
+    
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -14,6 +14,8 @@ const EnquiryForm = () => {
     source: "",
     executive: "",
   });
+   const [isLoading, setIsLoading] = useState(false);
+   const[validationError, setValidationError]=useState ({});
  
 
   const handleChange = (e) => {
@@ -50,14 +52,25 @@ const EnquiryForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);try {
+    toast.log(formData);
+    setIsLoading(true);
+
+
+
+    if(!validate()){
+      
+    }
+    try {
       console.log(formData);
+      toast.success("Registration");
+      handleClear();
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
+      toast.error(error.message);
     } finally {
       setIsLoading(false);
     }
-    handleClear();
+    
   };
 
    
@@ -74,7 +87,7 @@ const EnquiryForm = () => {
         <form onSubmit={handleSubmit} onReset={handleClear}>
           {/* Name */}
           <div className="mb-4 flex gap-4 items-center">
-            <label className="w-1/3 font-semibold">Name</label>
+            <label className="w-1/3 font-semibold ">Name</label>
             <input
               type="text"
               name="name"
