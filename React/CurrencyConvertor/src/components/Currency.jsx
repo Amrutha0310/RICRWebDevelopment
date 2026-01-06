@@ -1,6 +1,7 @@
 import React from "react";
 import CountryData from"../assets/CountryData.json";
-import {useState} from 'react'
+import {useState} from 'react';
+
 const Currency = () => {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
