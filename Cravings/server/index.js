@@ -7,7 +7,7 @@ import connectDB from './src/config/db.js';
 const app = express();
 
 app.use
-app.use(express.json());
+app.use(express.json());// converting data into readable json format
 // app.use("/auth",AuthRouter);
 
 app.get("/", (req,res) => {
