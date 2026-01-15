@@ -6,12 +6,14 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Header />
+        <Toaster/>
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -19,6 +21,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </>

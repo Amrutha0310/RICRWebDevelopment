@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import api from "../config/Api";
+import api from "../config/api";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
+    fullName: "", //same form for atomocity
     email: "",
     mobileNumber: "",
     password: "",
     confirmPassword: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [validationError, setValidationError] = useState({});
+  const [isLoading, setIsLoading] = useState(false); //process=>loading
+  const [validationError, setValidationError] = useState({}); //Error
 
   const handleChange = (e) => {
+    //detect changes
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleClearForm = () => {
+    //Clears the form
     setFormData({
       fullName: "",
       email: "",
@@ -29,7 +31,8 @@ const Register = () => {
   };
 
   const validate = () => {
-    let Error = {};
+    //validate the input field=>regular expression
+    let Error = {}; //error object
 
     if (formData.fullName.length < 3) {
       Error.fullName = "Name should be More Than 3 Characters";
@@ -47,16 +50,16 @@ const Register = () => {
       Error.email = "Use Proper Email Format";
     }
 
-    if (!/^[6-9]\d{9}$/.test(formData.mobileNumber)) {
+    if (!/^[0-9]\d{9}$/.test(formData.mobileNumber)) {
       Error.mobileNumber = "Only Indian Mobile Number allowed";
     }
 
     setValidationError(Error);
 
-    return Object.keys(Error).length > 0 ? false : true;
+    return Object.keys(Error).length > 0 ? false : true; //checking the ject=>error havong any key
   };
 
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -67,12 +70,12 @@ const Register = () => {
     }
 
     try {
-      const res = await api.post("/auth/register",formData)
+      const res = await api.post("/auth/register", formData); //api=>form data
       toast.success(res.data.message);
       handleClearForm();
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error(error.message); //if error
     } finally {
       setIsLoading(false);
     }
@@ -95,8 +98,8 @@ const Register = () => {
           {/* Form Container */}
           <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
             <form
-              onSubmit={handleSubmit}
-              onReset={handleClearForm}
+              onSubmit={handleSubmit} //event controller
+              onReset={handleClearForm} //event controller
               className="p-8"
             >
               {/* Personal Information */}
@@ -110,7 +113,8 @@ const Register = () => {
                       value={formData.fullName}
                       onChange={handleChange}
                       required
-                      className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                      disabled={isLoading} //=>laoding is false
+                      className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disbaled:bg-gray-200"
                     />
                     {validationError.fullName && (
                       <span className="text-xs text-red-500">
@@ -125,7 +129,8 @@ const Register = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                    disabled={isLoading} //=>laoding is false
+                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disbaled:bg-gray-200"
                   />
                   <input
                     type="tel"
@@ -135,7 +140,8 @@ const Register = () => {
                     value={formData.mobileNumber}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                    disabled={isLoading} //=>laoding is false
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disbaled:bg-gray-200"
                   />
                   <input
                     type="password"
@@ -144,7 +150,8 @@ const Register = () => {
                     placeholder="Create Password"
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                    disabled={isLoading} //=>laoding is false
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disbaled:bg-gray-200"
                   />
                   <input
                     type="password"
@@ -153,7 +160,8 @@ const Register = () => {
                     value={formData.confirmPassword}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                    disabled={isLoading} //=>laoding is false
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disbaled:bg-gray-200"
                   />
                 </div>
               </div>
@@ -161,16 +169,22 @@ const Register = () => {
               {/* Submit Button */}
               <div className="flex gap-4 pt-8 border-t-2 border-gray-200">
                 <button
-                  type="submit"
-                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg"
-                >
-                  Submit Registration
-                </button>
-                <button
                   type="reset"
-                  className="flex-1 bg-gray-300 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-400 transition duration-300 transform hover:scale-105"
+                  disabled={isLoading}
+                  className="flex-1 bg-gray-300 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-400 
+                  transition duration-300 transform hover:scale-105 disabled:scale-100 disabled:bg-gray-300 
+                  disabled:cursor-not-allowed"
                 >
                   Clear Form
+                </button>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                   className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg
+                    hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg  disabled:scale-100 disabled:bg-gray-300 
+                  disabled:cursor-not-allowed"
+                >
+                  {isLoading ?"Submitting":"Submit"}
                 </button>
               </div>
             </form>
