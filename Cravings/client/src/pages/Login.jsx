@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import api from "../config/api";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContent";
 
 const Login = () => {
+  const {setUser,setIsLogin} =useAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     //same form for atomocity
     email: "",
     password: "",
-    
   });
   const [isLoading, setIsLoading] = useState(false); //process=>loading
-  const [validationError, setValidationError] = useState({}); //Error
 
   const handleChange = (e) => {
     //detect changes
@@ -23,47 +25,28 @@ const Login = () => {
     setFormData({
       email: "",
       password: "",
-      
     });
-  };
-
-  const validate = () => {
-    //validate the input field=>regular expression
-    let Error = {}; //error object
-
-    
-    if (
-      !/^[\w\.]+@(gmail|outlook|ricr|yahoo)\.(com|in|co.in)$/.test(
-        formData.email
-      )
-    ) {
-      Error.email = "Use Proper Email Format";
-    }
-
-    
-
-    setValidationError(Error);
-
-    return Object.keys(Error).length > 0 ? false : true; //checking the ject=>error havong any key
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (!validate()) {
-      setIsLoading(false);
-      toast.error("Fill the Data correctly");
-      return;
-    }
+    console.log(formData);
 
     try {
       const res = await api.post("/auth/login", formData); //api=>form data
       toast.success(res.data.message);
+      setUser(res.data.data);
+      setIsLogin(true);
+      sessionStorage.setItem("CravingUser",JSON.stringify(res.data.data));
+         
       handleClearForm();
+      navigate("/user-dashboard");
     } catch (error) {
-      console.log(error);
-      toast.error(error?.response?.data?.message)|| "Unknown Error"; //if error
+      
+      toast.error(error?.response?.data?.message) || "Unknown Error"; 
+      console.log(error);//if error
     } finally {
       setIsLoading(false);
     }
@@ -71,13 +54,11 @@ const Login = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-6 px-4">
-        <div className="max-w-xl mx-auto">
+      <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-6 px-4 ">
+        <div className="max-w-xl mx-auto  ">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">
-              Login
-            </h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">Login</h1>
           </div>
 
           {/* Form Container */}
@@ -85,7 +66,7 @@ const Login = () => {
             <form
               onSubmit={handleSubmit} //event controller
               onReset={handleClearForm} //event controller
-              className="p-8"
+              className="p-8 "
             >
               {/* Personal Information */}
               <div className="mb-10">
@@ -100,7 +81,7 @@ const Login = () => {
                     disabled={isLoading} //=>laoding is false
                     className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disbaled:bg-gray-200"
                   />
-                 
+
                   <input
                     type="password"
                     name="password"
@@ -111,7 +92,6 @@ const Login = () => {
                     disabled={isLoading} //=>laoding is false
                     className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disbaled:bg-gray-200"
                   />
-                  
                 </div>
               </div>
 
@@ -129,11 +109,11 @@ const Login = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                   className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg
+                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg
                     hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg  disabled:scale-100 disabled:bg-gray-300 
                   disabled:cursor-not-allowed"
                 >
-                  {isLoading ?"Submitting":"Submit"}
+                  {isLoading ? "Submitting" : "Submit"}
                 </button>
               </div>
             </form>
