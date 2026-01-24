@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import api from "../config/api";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContent";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const {setUser,setIsLogin} =useAuth();

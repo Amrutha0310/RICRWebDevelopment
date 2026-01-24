@@ -17,4 +17,4 @@ import React,{useContext, useEffect,useState} from "react";
 };
  export const useAuth = () =>{ 
     return  useContext(AuthContext);
-}
+};
