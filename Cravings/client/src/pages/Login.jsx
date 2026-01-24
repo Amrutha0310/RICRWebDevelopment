@@ -12,6 +12,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+
   const [isLoading, setIsLoading] = useState(false); //process=>loading
 
   const handleChange = (e) => {
@@ -42,11 +43,37 @@ const Login = () => {
       sessionStorage.setItem("CravingUser",JSON.stringify(res.data.data));
          
       handleClearForm();
-      navigate("/user-dashboard");
+      // navigate("/user-dashboard");
+         switch (res.data.data.role) {
+        case "manager": {
+          setRole("manager");
+          navigate("/resturant-dashboard");
+          break;
+        }
+        case "partner": {
+          setRole("partner");
+          navigate("/rider-dashboard");
+          break;
+        }
+        case "customer": {
+          setRole("customer");
+          navigate("/user-dashboard");
+          break;
+        }
+        case "admin": {
+          setRole("admin");
+          navigate("/admin-dashboard");
+             break;
+        }
+
+        default:
+          break;
+      }
+
     } catch (error) {
-      
-      toast.error(error?.response?.data?.message) || "Unknown Error"; 
-      console.log(error);//if error
+       console.log(error);//if error
+       toast.error(error?.response?.data?.message || "Unknown Error"); 
+     
     } finally {
       setIsLoading(false);
     }

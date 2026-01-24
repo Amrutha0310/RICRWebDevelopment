@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
+
 const userSchema = mongoose.Schema(
   {
-    //=> data stored here of users
     fullName: {
       type: String,
       required: true,
@@ -28,23 +28,28 @@ const userSchema = mongoose.Schema(
     dob: {
       type: String,
       required: true,
+      default: "N/A",
     },
     gender: {
       type: String,
-      enum: ["male", "female", "others"],
+      enum: ["male", "female", "others", "N/A"],
       required: true,
+      default: "N/A",
     },
     address: {
       type: String,
       required: true,
+      default: "N/A",
     },
     city: {
       type: String,
       required: true,
+      default: "N/A",
     },
     pin: {
       type: String,
       required: true,
+      default: "N/A",
     },
     photo: {
       url: {
@@ -56,11 +61,80 @@ const userSchema = mongoose.Schema(
         default: "",
       },
     },
+    geoLocation: {
+      lat: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
+      lon: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
+    },
+    paymentDetails: {
+      upi: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
+      account_number: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
+      ifs_Code: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
+    },
     restaurantName: {
-        
+      type: String,
+      required: true,
+      default: "N/A",
+    },
+    cuisine: {
+      type: String,
+      required: true,
+      default: "N/A",
+    },
+    documents: {
+      gst: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
+      fssai: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
+      rc: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
+      dl: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
+      uidai: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
+      pan: {
+        type: String,
+        required: true,
+        default: "N/A",
+      },
     },
   },
   { timestamps: true },
 );
-const User = mongoose.model("User", userSchema); //
+
+const User = mongoose.model("User", userSchema);
 export default User;

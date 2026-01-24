@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
-import api from "../../../config/Api";
+import api from "../../../config/api";
 
 const EditProfileModal = ({ onClose }) => {
   const { user, setUser } = useAuth();

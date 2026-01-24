@@ -1,20 +1,24 @@
 import User from "../models/userModel.js"
-import bcrypt from 'bcrypt'
+import bcrypt from "bcrypt";
 import { genToken } from "../utils/authToken.js";
 
 
 export const UserRegister = async(req,res,next)=>{
     try {
-        //accpet data from Frontend
-         const {fullName,email,mobileNumber,password} = req.body;
+       
+         console.log(req.body);
+          //accept data from Frontend
+         const {fullName,email,mobileNumber,password,role} = req.body;
           
          //verify that all data exist
-         if(!fullName ||!email || !mobileNumber || !password){
+         if(!fullName ||!email || !mobileNumber || !password || !role){
             const error = new Error("All fields required");
             error.statusCode = 400;
             return next(error);
          }
-             //check for dupliacate user before registration
+            console.log({ fullName, email, mobileNumber, password });
+
+             //check for duplicate user before registration
              const existingUser = await User.findOne({email});
              if(existingUser){
              const error =new Error("Email is already registred");
@@ -22,43 +26,48 @@ export const UserRegister = async(req,res,next)=>{
             return next(error);
              }
 
+              console.log("Sending Data to DB");
+
              //encrypt the password
              const salt = await bcrypt.genSalt(10);
              const hashPassword = await bcrypt.hash(password,salt); 
              //  const hashPassword = await bcrypt.hash(password,10); //method-2
 
+             console.log("Password Hashing Done. hashPassword = ", hashPassword);
              //save data to database
              const newUser = await User.create({
                 fullName,
                 email,
                 mobileNumber,
                 password:hashPassword,
+                 role,
              });
 
            //send response to Frontend 
            console.log(newUser);
            res.status(201).json({message:"Registration Succesfull"});
-
+             //End
             } catch (error) {
-              next(error)
+              next(error);
         
     }
-}
+};
 export const UserLogin = async(req,res,next)=>{
     try {
         //Fetch data from Frontend
         const {email,password}=req.body;
 
+         //verify that all data exist
         if( !email || !password){
             const error = new Error("All fields required");
             error.statusCode = 400;
             return next(error);
         }
-        //check for dupliacate user before registration
+        //check for dupliacate user before registration     //=>Check if user is registred or not
              const existingUser = await User.findOne({email});
              if(!existingUser){
              const error =new Error("Email not Registered");
-             error.statusCode = 402;
+             error.statusCode = 401;
             return next(error);
              }
              
@@ -66,7 +75,7 @@ export const UserLogin = async(req,res,next)=>{
          const isVerified = await  bcrypt.compare(password,existingUser.password);
          if(!isVerified){
             const error =new Error("password didn't match");
-             error.statusCode = 402;
+             error.statusCode = 401;
             return next(error);
          }
 
@@ -75,19 +84,19 @@ export const UserLogin = async(req,res,next)=>{
 
 
          //send message to Frontend
-         res.status(200).json({message:"Login Succesfull",data:existingUser});
+         res.status(200).json({message:"Login Succesfull", data:existingUser});
          //end
         
     } catch (error) {
-        next(error)
+        next(error);
         
     }
 }
 export const UserLogout = async(req,res,next)=>{
     try {
-         res.status(200).json({message:"Logout Succesfull"});
+         res.status(200).json({message:"Logout Successfull"});
     } catch (error) {
-        next(error)
+        next(error);
         
     }
 }
