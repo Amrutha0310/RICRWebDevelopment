@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import UserSideBar from "../../components/userDashboard/UserSideBar";
 import UserOverview from "../../components/userDashboard/userOverview";
 import UserProfile from "../../components/userDashboard/UserProfile";
@@ -8,6 +8,20 @@ import USerHelpDesk from "../../components/userDashboard/USerHelpDesk";
 
 const UserDashboard = () => {
   const [active, setActive] = useState("overview");
+  
+  useEffect(()=>{
+    if(!isLogin){
+      navigate("/login");
+    }
+   });
+
+    if(role !== "customer"){
+      return(
+        <>
+        div
+        </>
+      )
+    }
 
   return (
     <div className=" w-full h-[90vh] flex">

@@ -1,4 +1,5 @@
 import User from "../models/userModel.js"
+import cloudinary from "./"
 
 export const UserUpdate = async (req, res, next) => {
   try {
@@ -41,3 +42,26 @@ export const UserUpdate = async (req, res, next) => {
     next(error);
   }
 };
+
+
+
+
+ export const UserChangePhoto = async (req,res,next)=>{
+  const currentUser
+
+ }
+ if(currentUser.photo.publicID){
+  await cloudinary
+ }
+  const b64 = Buffer.from(dp.buffer).toString("base64");
+  console.log(b64.slice(0,100));
+  const dataURI =`data:${dp.mimtype};base64,${b64}`;
+  console.log("DataURI",dataURI.slice(0,100));
+
+  const result = await cloudinary.uploader.upload(dataURI,{
+    folder:"Cravings/User",
+    height:500,
+    width:500,
+    crop:"fill",
+  })
+ )

@@ -1,8 +1,9 @@
-import dotenv from 'dotenv'
-dotenv.config();
+// import dotenv from 'dotenv'
+// dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import cloudinary from "./src/config/cloudinary.js"
 import cookieParser from 'cookie-parser';
 import connectDB from './src/config/db.js';
 import  AuthRouter from './src/routers/authRouter.js';
@@ -33,7 +34,14 @@ app.get("/", (req,res) => {
  res.status(StatusCode).json({message:ErrorMessage});   
  });
 const port = process.env.PORT ||5000;
-app.listen(port, () =>{
+app.listen(port,  async () =>{
     console.log("Server Started Port:",port);
-    connectDB();
+    connectDB();   
+    try {  //we need to show error as  if any case because cloudinary is  not in my system it is in network(API-call)
+          const res = await cloudinary.api.ping()  // check connectivity power=>
+            console.log("Cloudinary API is Working:",res);
+
+    } catch (error) {
+         console.error("Error Connecting Cloudinary API",error);
+    }
 });

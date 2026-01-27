@@ -5,24 +5,22 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  const {setUser,setIsLogin} =useAuth();
+  const { setUser, setIsLogin, setRole } = useAuth();
+
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    //same form for atomocity
     email: "",
     password: "",
   });
-
-  const [isLoading, setIsLoading] = useState(false); //process=>loading
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
-    //detect changes
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleClearForm = () => {
-    //Clears the form
     setFormData({
       email: "",
       password: "",
@@ -34,17 +32,14 @@ const Login = () => {
     setIsLoading(true);
 
     console.log(formData);
-
     try {
-      const res = await api.post("/auth/login", formData); //api=>form data
+      const res = await api.post("/auth/login", formData);
       toast.success(res.data.message);
       setUser(res.data.data);
       setIsLogin(true);
-      sessionStorage.setItem("CravingUser",JSON.stringify(res.data.data));
-         
+      sessionStorage.setItem("CravingUser", JSON.stringify(res.data.data));
       handleClearForm();
-      // navigate("/user-dashboard");
-         switch (res.data.data.role) {
+      switch (res.data.data.role) {
         case "manager": {
           setRole("manager");
           navigate("/resturant-dashboard");
@@ -63,17 +58,15 @@ const Login = () => {
         case "admin": {
           setRole("admin");
           navigate("/admin-dashboard");
-             break;
+          break;
         }
 
         default:
           break;
       }
-
     } catch (error) {
-       console.log(error);//if error
-       toast.error(error?.response?.data?.message || "Unknown Error"); 
-     
+      console.log(error);
+      toast.error(error?.response?.data?.message || "Unknown Error");
     } finally {
       setIsLoading(false);
     }
@@ -81,19 +74,24 @@ const Login = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-6 px-4 ">
-        <div className="max-w-xl mx-auto  ">
+      <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-6 px-4">
+        <div className="max-w-xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">Login</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">
+              Welcome Back
+            </h1>
+            {/* <p className="text-lg text-gray-600">
+              You are 1 step away to stop your Cavings
+            </p> */}
           </div>
 
           {/* Form Container */}
           <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
             <form
-              onSubmit={handleSubmit} //event controller
-              onReset={handleClearForm} //event controller
-              className="p-8 "
+              onSubmit={handleSubmit}
+              onReset={handleClearForm}
+              className="p-8"
             >
               {/* Personal Information */}
               <div className="mb-10">
@@ -105,19 +103,19 @@ const Login = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    disabled={isLoading} //=>laoding is false
-                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disbaled:bg-gray-200"
+                    disabled={isLoading}
+                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
                   />
 
                   <input
                     type="password"
                     name="password"
                     value={formData.password}
-                    placeholder="Enter Password"
+                    placeholder="Create Password"
                     onChange={handleChange}
                     required
-                    disabled={isLoading} //=>laoding is false
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disbaled:bg-gray-200"
+                    disabled={isLoading}
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
                   />
                 </div>
               </div>
@@ -127,20 +125,16 @@ const Login = () => {
                 <button
                   type="reset"
                   disabled={isLoading}
-                  className="flex-1 bg-gray-300 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-400 
-                  transition duration-300 transform hover:scale-105 disabled:scale-100 disabled:bg-gray-300 
-                  disabled:cursor-not-allowed"
+                  className="flex-1 bg-gray-300 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-400 transition duration-300 transform hover:scale-105 disabled:scale-100 disabled:bg-gray-300 disabled:cursor-not-allowed"
                 >
                   Clear Form
                 </button>
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg
-                    hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg  disabled:scale-100 disabled:bg-gray-300 
-                  disabled:cursor-not-allowed"
+                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg disabled:scale-100 disabled:bg-gray-300  disabled:cursor-not-allowed"
                 >
-                  {isLoading ? "Submitting" : "Submit"}
+                  {isLoading ? "loading.." : "Login"}
                 </button>
               </div>
             </form>
