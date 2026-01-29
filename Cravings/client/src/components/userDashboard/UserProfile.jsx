@@ -9,23 +9,28 @@ import toast from "react-hot-toast";
 
 
 const UserProfile = () => {
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   // const {user , role,isLogin}= useAuth();
   // const navigate=useNavigate()
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
    const [preview, setPreview] = useState("");
-  const [photo, setPhoto] = useState("");
+  // const [photo, setPhoto] = useState("");
 
-  const changePhoto = async () => {
-    const form_Data = new FormData();
+  const changePhoto = async (photo) => {
+    const form_Data = new FormData();  //object
+
+     // console.log("Printing photo", photo);
 
     form_Data.append("image", photo);
-    form_Data.append("imageURL", preview);
+    // form_Data.append("imageURL", preview);
 
     try {
       const res = await api.patch("/user/changePhoto", form_Data);
 
       toast.success(res.data.message);
+       setUser(res.data.data);
+      sessionStorage.setItem("CravingUser", JSON.stringify(res.data.data));
+
     } catch (error) {
       toast.error(error?.response?.data?.message || "Unknown Error");
     }
@@ -34,12 +39,13 @@ const UserProfile = () => {
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     const newPhotoURL = URL.createObjectURL(file);
-    //console.log(newPhotoURL);
+    console.log(newPhotoURL);
     setPreview(newPhotoURL);
-    setTimeout(() => {
-      setPhoto(file);
-      changePhoto();
-    }, 5000);
+    // setTimeout(() => {
+    //   setPhoto(file);
+    //   changePhoto();
+    // }, 5000);
+     changePhoto(file);
   };
 
   return (
@@ -73,13 +79,13 @@ const UserProfile = () => {
             </div>
              <div>
               <div className="text-3xl text-(--color-primary) font-bold">
-                {user.fullName}
+                {user.fullName || "User Name"}
               </div>
               <div className="text-gray-600 text-lg font-semibold">
-                {user.email}
+                {user.email  || "user@example.com"}
               </div>
               <div className="text-gray-600 text-lg font-semibold">
-                {user.mobileNumber}
+                {user.mobileNumber  ||"XXXXXXXXXX"}
               </div>
             </div>
           </div>
@@ -88,7 +94,7 @@ const UserProfile = () => {
               Edit
             </button>
             <button className="px-4 py-2 rounded bg-(--color-secondary) text-white">
-              Reset
+              Reset  Password
             </button>
           </div>
         </div>

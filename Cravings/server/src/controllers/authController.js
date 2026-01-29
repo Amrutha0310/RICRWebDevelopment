@@ -34,6 +34,14 @@ export const UserRegister = async(req,res,next)=>{
              //  const hashPassword = await bcrypt.hash(password,10); //method-2
 
              console.log("Password Hashing Done. hashPassword = ", hashPassword);
+             
+             
+              const photoURL = `https://placehold.co/600x400?text=${fullName.charAt(0).toUpperCase()}`;
+            const photo = {
+              url: photoURL,
+             };
+             
+             
              //save data to database
              const newUser = await User.create({
                 fullName,
@@ -41,6 +49,7 @@ export const UserRegister = async(req,res,next)=>{
                 mobileNumber,
                 password:hashPassword,
                  role,
+                 photo,
              });
 
            //send response to Frontend 

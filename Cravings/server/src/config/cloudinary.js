@@ -12,4 +12,4 @@
 
   console.log("Cloudinary Configuration Done");
 
-   export default cloudinary
+   export default cloudinary;

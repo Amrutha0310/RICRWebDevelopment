@@ -6,7 +6,7 @@ export const NewContact = async(req,res,next) => {
         //verify data
         const{fullName, email, mobileNumber, message} = req.body;
            if(!fullName ||!email || !mobileNumber || !message){
-            const error = new Error("All fields required");
+            const error = new Error("fill fields required");
             error.statusCode = 400;
             return next(error);
          }

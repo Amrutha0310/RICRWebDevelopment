@@ -34,7 +34,7 @@ const Register = () => {
 
   const validate = () => {
     //validate the input field=>regular expression
-    let Error = {}; //error object
+    let Error = {}; //error object  empty
 
     if (formData.fullName.length < 3) {
       Error.fullName = "Name should be More Than 3 Characters";
