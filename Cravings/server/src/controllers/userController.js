@@ -65,25 +65,25 @@ export const UserUpdate = async (req, res, next) => {
 
  
  if(currentUser.photo.publicID){
-   await cloudinary.uploader.destroy(currentUser.photo.publicID);
+   await cloudinary.uploader.destroy(currentUser.photo.publicID);  //old photo delete
  }
   const b64 = Buffer.from(dp.buffer).toString("base64");
   console.log(b64.slice(0,100));
-  const dataURI =`data:${dp.mimtype};base64,${b64}`;
+  const dataURI =`data:${dp.mimetype};base64,${b64}`;
   console.log("DataURI",dataURI.slice(0,100));
 
-  const result = await cloudinary.uploader.upload(dataURI,{
+  const result = await cloudinary.uploader.upload(dataURI,{  // third party API called
     folder:"Cravings/User",
     height:500,
     width:500,
     crop:"fill",
   });
  
-    console.log("Image Uplaoded successfully: ", result);
-    currentUser.photo.url = result.secure_url;
+    console.log("Image Uploaded successfully: ", result);
+    currentUser.photo.url = result.secure_url;   //mongoDB me save hoga
     currentUser.photo.publicID = result.public_id;
 
-    await currentUser.save();
+    await currentUser.save();  // save current user
 
     res.status(200).json({ message: "Photo Updated", data: currentUser });
   } catch (error) {
