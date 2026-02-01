@@ -3,7 +3,7 @@
 
 :root {
   /* Primary */
-  --color-primary: #161E54;
+  --color-primary: #E23744;
   --color-primary-hover: #0F163F;
 
   /* Secondary */
@@ -11,8 +11,8 @@
   --color-secondary-hover: #D85F2E;
 
   /* Background & Text */
-  --color-background: #BBE0EF;
-  --color-text: #161E54;
+  --color-background:#F3F4F6;
+  --color-text: #ebbfb6;
 
   /* Accent */
   --color-accent: #FF986A;
