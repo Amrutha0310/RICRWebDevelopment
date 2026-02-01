@@ -74,7 +74,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-6 px-4">
+      <div className="min-h-screen bg-linear-to-br bg-gray-200 py-6 px-4">
         <div className="max-w-xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
@@ -87,7 +87,7 @@ const Login = () => {
           </div>
 
           {/* Form Container */}
-          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+          <div className="bg-gray-100 rounded-xl shadow-2xl overflow-hidden">
             <form
               onSubmit={handleSubmit}
               onReset={handleClearForm}
@@ -135,7 +135,7 @@ const Login = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg disabled:scale-100 disabled:bg-gray-300  disabled:cursor-not-allowed"
+                  className="flex-1 bg-linear-to-r  bg-orange-500 text-white font-bold py-4 px-6 rounded-lg hover:bg-red-700 transition duration-300 transform hover:scale-105 shadow-lg disabled:scale-100 disabled:bg-gray-300  disabled:cursor-not-allowed"
                 >
                   {isLoading ? "loading.." : "Login"}
                 </button>

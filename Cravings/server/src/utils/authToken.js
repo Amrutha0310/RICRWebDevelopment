@@ -17,7 +17,7 @@ export const genToken = async (user, res) => {
       maxAge: 1000 * 60 * 60 * 24, //milliseconds value
       httpOnly: true, //who all can use =>security purpose
       secure: false,
-      sameSite: "lax", // sepcial-mode=>through which we can use in thunderclient
+      sameSite: "lax", // sepcial-mode=>through which we can use in thunderclient   //security  setting
     });
   } catch (error) {
     throw error;

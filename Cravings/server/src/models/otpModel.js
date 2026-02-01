@@ -11,7 +11,7 @@
          required :true,
     },
      createAt:{    /// create manually reather than use of time stamps
-         type:String,
+         type:Date,
          required :true,
          expires: 300,
     },

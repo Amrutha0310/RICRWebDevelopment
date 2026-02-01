@@ -110,5 +110,14 @@ export const UserLogout = async(req,res,next)=>{
         
     }
 
-     export const UserGenOTP
+     export const UserGenOTP  {}
+
+
+      export const UserVerfiedOtp = async (req,res,next){
+        try {
+            
+        } catch (error) {
+            
+        }
+      }
 }
