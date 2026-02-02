@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema(
@@ -132,11 +133,11 @@ const userSchema = mongoose.Schema(
         default: "N/A",
       },
     },
-    isActive:{
-      type:String,
-      enum:["active","inactive","blocked"],
-      required:true,
-      default:"active",
+    isActive: {
+      type: String,
+      enum: ["active", "inactive", "blocked"],
+      required: true,
+      default: "active",
     },
   },
   { timestamps: true },

@@ -13,6 +13,9 @@ const sendEmail = async (to, subject, message) => {
         pass: process.env.GMAIL_PASSCODE,
       },
     });
+    
+    console.log("3....2....1....");
+
 
     const mailOption = {
       from: process.env.GMAIL_USER,
@@ -20,8 +23,8 @@ const sendEmail = async (to, subject, message) => {
       subject,
       html: message, //JSON format
     };
-    console.log("Processing..");
-
+    
+      console.log("Sending Email");
     const res = await transporter.sendMail(mailOption);
     console.log(res);
   } catch (error) {
