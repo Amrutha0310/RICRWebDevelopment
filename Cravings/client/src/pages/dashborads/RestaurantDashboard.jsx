@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RestaurantSideBar from "../../components/restaurantDashboard/RestaurantSideBar";
-import { RestaurantOverview } from "../../components/restaurantDashboard/RestaurantOverview";
+import  RestaurantOverview  from "../../components/restaurantDashboard/RestaurantOverview";
 import RestaurantProfile from "../../components/restaurantDashboard/RestaurantProfile";
 import RestaurantMenu from "../../components/restaurantDashboard/RestaurantMenu";
 import RestaurantOrders from "../../components/restaurantDashboard/RestaurantOrders"

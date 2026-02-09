@@ -6,12 +6,14 @@ import { TbTransactionRupee } from "react-icons/tb";
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdLogout } from "react-icons/md";
-import api from "../../config/api";
+import api from "../../config/Api";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const UserSideBar = ({ active, setActive, isCollapsed, setIsCollapsed }) => {
   const { setUser, setIsLogin } = useAuth();
+  const navigate = useNavigate();
 
   const menuItems = [
     { key: "overview", title: "OverView", icon: <TbChartTreemap /> },
@@ -31,6 +33,7 @@ const UserSideBar = ({ active, setActive, isCollapsed, setIsCollapsed }) => {
       toast.success(res.data.message);
       setUser("");
       setIsLogin(false);
+      navigate("/");
       sessionStorage.removeItem("CravingUser");
     } catch (error) {
       toast.error(error?.response?.data?.message || "Unknown Error");

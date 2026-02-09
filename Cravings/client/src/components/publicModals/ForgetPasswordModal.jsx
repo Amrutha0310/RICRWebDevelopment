@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { BsArrowClockwise } from "react-icons/bs";
-import api from "../../config/api";
+import api from "../../config/Api";
 import toast from "react-hot-toast";
 
 const ForgetPasswordModal = ({ onClose }) => {
@@ -9,23 +9,29 @@ const ForgetPasswordModal = ({ onClose }) => {
     email: "",
     otp: "",
     newPassword: "",
-    cfnewPassword: "",
+    cfNewPassword: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isOtpVerified, setIsOtpVerified] = useState(false);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    if (formData.newPassword !== formData.cfNewPassword) {
+      toast.error("New Password and Confirm Password Must be Same");
+      setLoading(false);
+      return;
+    }
+
     try {
       console.log(formData);
       let res;
       if (isOtpSent) {
         if (isOtpVerified) {
-          res = await api.post("auth/forgetPassword", formData);
+          res = await api.post("/auth/forgetPasword", formData);
           toast.success(res.data.message);
           onClose();
         } else {
@@ -35,7 +41,7 @@ const ForgetPasswordModal = ({ onClose }) => {
           setIsOtpVerified(true);
         }
       } else {
-        res = await api.post("auth/genOtp", formData);
+        res = await api.post("/auth/genOtp", formData);
         toast.success(res.data.message);
         setIsOtpSent(true);
       }
@@ -51,7 +57,6 @@ const ForgetPasswordModal = ({ onClose }) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   return (
     <>
       <div className="fixed inset-0 bg-black/50 flex justify-center items-center">
@@ -67,8 +72,9 @@ const ForgetPasswordModal = ({ onClose }) => {
               ⊗
             </button>
           </div>
-           <form onSubmit={handleSubmit} className="p-5 ">
-                 <div className="space-y-6">
+
+          <form onSubmit={handleSubmit} className="p-5 ">
+            <div className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address *
@@ -83,7 +89,8 @@ const ForgetPasswordModal = ({ onClose }) => {
                   disabled={isOtpSent}
                 />
               </div>
-               {isOtpSent && (
+
+              {isOtpSent && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     OTP *
@@ -99,7 +106,8 @@ const ForgetPasswordModal = ({ onClose }) => {
                   />
                 </div>
               )}
-                 {isOtpSent && isOtpVerified && (
+
+              {isOtpSent && isOtpVerified && (
                 <div className="space-y-5">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -114,7 +122,7 @@ const ForgetPasswordModal = ({ onClose }) => {
                       placeholder="Enter your new password"
                     />
                   </div>
-                       <div>
+                  <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Confirm New Password *
                     </label>
@@ -127,10 +135,11 @@ const ForgetPasswordModal = ({ onClose }) => {
                       placeholder="Confirm new password"
                     />
                   </div>
-               </div>
-                 )}
-                 </div>
-                    <div className="w-full flex justify-center mt-5">
+                </div>
+              )}
+            </div>
+
+            <div className="w-full flex justify-center mt-5">
               <button
                 type="submit"
                 disabled={loading}
@@ -154,8 +163,7 @@ const ForgetPasswordModal = ({ onClose }) => {
                 )}
               </button>
             </div>
-
-           </form>
+          </form>
         </div>
       </div>
     </>

@@ -6,4 +6,4 @@ const userOverview = () => {
   )
 }
 
-export default userOverview
+export default userOverview;

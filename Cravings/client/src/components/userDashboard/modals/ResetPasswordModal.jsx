@@ -1,7 +1,6 @@
-
 import React from "react";
 import { useState } from "react";
-import api from "../../../config/api";
+import api from "../../../config/Api";
 import toast from "react-hot-toast";
 
 const ResetPasswordModal = ({ onClose }) => {
