@@ -10,7 +10,7 @@ export const UserRegister = async(req,res,next)=>{
     try {
        
          console.log(req.body);
-          //accept data from Frontend
+          //accept data from Frontend  =>request send by Frontend
          const {fullName,email,mobileNumber,password,role} = req.body;
           
          //verify that all data exist

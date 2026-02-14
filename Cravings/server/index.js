@@ -11,36 +11,36 @@ import PublicRouter from './src/routers/publicRouter.js'
 import UserRouter from './src/routers/userRouter.js'
 import RestaurantRouter from './src/routers/restaurantRouter.js'
 
-const app = express();
+const app = express();   //app-express access
  
 app.use(cors({origin:"http://localhost:5173", credentials:true}));
-app.use(express.json());// converting data into readable json format
+app.use(express.json());// converting data into readable json format -so that when data is send(r
 app.use(cookieParser());
 app.use(morgan("dev"));
 
 
 app.use("/auth",AuthRouter);
-app.use("/public",PublicRouter);
+app.use("/public",PublicRouter);   
 app.use("/user",UserRouter);
 app.use("/restaurant",RestaurantRouter);  //Router call
 
-
-app.get("/", (req,res) => {
-    console.log("Server is Working");
+// creating server using express
+app.get("/", (req,res) => {   // route handler
+    console.log("Server is Working"); 
 });
 
- app.use((err,req,res,next)=>{
+ app.use((err,req,res,next)=>{    //Default Error Handler
     const ErrorMessage = err.message || "Internal Server Error";
     const StatusCode = err.statusCode || 500;
     console.log("Error Found ", { ErrorMessage, StatusCode });
 
  res.status(StatusCode).json({message:ErrorMessage});   
  });
-const port = process.env.PORT ||5000;
+const port = process.env.PORT ||5000;    //port listen karwaaya 
 app.listen(port,  async () =>{
-    console.log("Server Started Port:",port);
-    connectDB();   
-    try {  //we need to show error as  if any case because cloudinary is  not in my system it is in network(API-call)
+    console.log("Server Started Port:",port);   
+    connectDB();     //connected db
+    try {  //we need to show (try-catch) error as  if any case because cloudinary is  not in my system it is in network(API-call)
           const res = await cloudinary.api.ping()  // check connectivity power=>
             console.log("Cloudinary API is Working:",res);
 

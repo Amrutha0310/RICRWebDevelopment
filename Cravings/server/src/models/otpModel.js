@@ -10,8 +10,8 @@
          type:String,
          required :true,
     },
-     createAt:{    /// create manually reather than use of time stamps
-          type: Date,
+     createAt:{    /// create manually rather than use of time stamps
+     type: Date,
     default: Date.now,
     expires: 300, // 5 minutes
   },

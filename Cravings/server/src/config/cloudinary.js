@@ -10,6 +10,6 @@
     api_secret:process.env.CLOUDINARY_API_SECRET,
  });
 
-  console.log("Cloudinary Configuration Done");
+console.log("Cloudinary Configuration Done");
 
    export default cloudinary;
